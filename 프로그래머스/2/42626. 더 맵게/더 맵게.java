@@ -1,16 +1,19 @@
-import java.util.PriorityQueue;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 class Solution {
     public int solution(int[] scoville, int K) {
-        PriorityQueue<Integer> meal = new PriorityQueue<>();
+         PriorityQueue<Integer> meal = new PriorityQueue<>();
         
-        for (int q : scoville){
+        for (int q : scoville) {
             meal.add(q);
         }
         
         int mix = 0;
         
-        while (meal.size() > 1 && meal.peek() < K){
+        while (meal.size() > 1) {
+            
             int first = meal.poll();
             int second = meal.poll();
             
@@ -19,7 +22,7 @@ class Solution {
             mix++;
         }
         
-        if (meal.peek() < K){
+        if (meal.size() == 1 && meal.peek() >= K) {
             return -1;
         }
         
